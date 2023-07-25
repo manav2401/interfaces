@@ -80,6 +80,11 @@ message NonceReply {
   uint64 nonce = 2;
 }
 
+message AddTraceSenderRequest{
+  types.H160 address = 1;
+}
+message AddTraceSenderResponse{}
+
 service Txpool {
   // Version returns the service version number
   rpc Version(google.protobuf.Empty) returns (types.VersionReply);
@@ -100,4 +105,6 @@ service Txpool {
   rpc Status(StatusRequest) returns (StatusReply);
   // returns nonce for given account
   rpc Nonce(NonceRequest) returns (NonceReply);
+  // adds address to trace sender
+  rpc AddTraceSender(AddTraceSenderRequest) returns (AddTraceSenderResponse);
 }
